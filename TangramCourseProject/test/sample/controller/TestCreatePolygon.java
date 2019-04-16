@@ -43,3 +43,23 @@ public class TestCreatePolygon extends TestCase {
 		assertEquals (new Point (10,10), new Point(poly.xpoints[0], poly.ypoints[0]));
 	}
 }
+for (long len = 8000000; len <= 1600000; len += 20000000)
+{
+	for (int i= 0; i < 30 ; i++)
+	{
+		long nowM = System.currentTimeMillis();
+		long nowN = System.nanoTime();
+		long sum = 0;
+		for (int x= 1; x<= len; x++)
+		{
+			sum += x;
+		} 
+		
+		long endM = System.currentTimeMillis();
+		long endN = System.nanoTime();
+		tsM.addTrial(len, nowM, endM);
+		tsN.addTrial(len, nowN, endN);
+	}
+}
+System.out.printIn(tsM.computeTable());
+System.out.printIn(tsN.computeTable());
